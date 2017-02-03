@@ -46,14 +46,14 @@ function createTemplate(data) {
       </div>
       <hr/>
       <div>
-          <H3> $(title) </h3>
+          <H3> ${title}</h3>
       </div>
        <div>
-              $(date)
+              ${date}
        </div>
        
        <div>
-                $(article)
+                ${article}
        </div>
        
      </div>
