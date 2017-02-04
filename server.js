@@ -5,24 +5,63 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-
-var articleOne = {
-    title: 'Article One',
-    date: '2 Feb, 2017',
-    article: `
-       <p> This is arcticle one. It is very nice. It is very nice
-           It is very nice. It is very nice. It is very niceIt is very niceIt is very nice.
-            </p>
-            
+var articles = {
+        articleOne: {
+        title: 'Article One',
+        date: '2 Feb, 2017',
+        article: `
            <p> This is arcticle one. It is very nice. It is very nice
-           It is very nice. It is very nice. It is very niceIt is very niceIt is very nice.
-            </p>
-            
-            <p> This is arcticle one. It is very nice. It is very nice
-           It is very nice. It is very nice. It is very niceIt is very niceIt is very nice.
-            </p> 
-    `
+               It is very nice. It is very nice. It is very niceIt is very niceIt is very nice.
+                </p>
+                
+               <p> This is arcticle one. It is very nice. It is very nice
+               It is very nice. It is very nice. It is very niceIt is very niceIt is very nice.
+                </p>
+                
+                <p> This is arcticle one. It is very nice. It is very nice
+               It is very nice. It is very nice. It is very niceIt is very niceIt is very nice.
+                </p> 
+        `
+    },
+
+    articleTwo: {
+        title: 'Article One',
+        date: '2 Feb, 2017',
+        article: `
+           <p> This is arcticle one. It is very nice. It is very nice
+               It is very nice. It is very nice. It is very niceIt is very niceIt is very nice.
+                </p>
+                
+               <p> This is arcticle one. It is very nice. It is very nice
+               It is very nice. It is very nice. It is very niceIt is very niceIt is very nice.
+                </p>
+                
+                <p> This is arcticle one. It is very nice. It is very nice
+               It is very nice. It is very nice. It is very niceIt is very niceIt is very nice.
+                </p> 
+        `
+    },
+
+    articleThree: {
+        title: 'Article One',
+        date: '2 Feb, 2017',
+        article: `
+           <p> This is arcticle one. It is very nice. It is very nice
+               It is very nice. It is very nice. It is very niceIt is very niceIt is very nice.
+                </p>
+                
+               <p> This is arcticle one. It is very nice. It is very nice
+               It is very nice. It is very nice. It is very niceIt is very niceIt is very nice.
+                </p>
+                
+                <p> This is arcticle one. It is very nice. It is very nice
+               It is very nice. It is very nice. It is very niceIt is very niceIt is very nice.
+                </p> 
+        `
+    }
+
 }
+
 
 function createTemplate(data) {
     
@@ -69,17 +108,8 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function (req, res) {
-   res.send(createTemplate(articleOne));
-});
-
-app.get('/article-two', function (req, res) {
-   res.sendFile(path.join(__dirname,'ui', 'article-two.html'));
-});
-
-app.get('/article-three', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
-    
+app.get('/:articleName', function (req, res) {
+   res.send(createTemplate(articles[articleName]));
 });
 
 app.get('/ui/style.css', function (req, res) {
