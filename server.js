@@ -119,7 +119,7 @@ function createTemplate(data) {
 return htmlTemplate;
 }
 
-app.get('test-db', function(req,res) {
+app.get('testdb', function(req,res) {
     //make a select request
     //return a response with the results.
     pool.query(`SELECT * FROM test`, function(err,result){
