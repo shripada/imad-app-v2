@@ -80,7 +80,7 @@ var articles = {
 
 
 function createTemplate(data) {
-    
+    return;
     var article = data.article;
     var date = data.date;
     var title = data.title;
