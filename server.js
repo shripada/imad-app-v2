@@ -1,10 +1,35 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
+var Pool = require('pg').Pool;
+
 
 var app = express();
 app.use(morgan('combined'));
 
+// you can optionally supply other values
+var config = {
+  host:'db.imad.hasura.io',
+  user: 'shripada',
+  password: process.env.DB_PASSWORD,
+  database: 'shripada',
+};
+
+// create the pool somewhere globally so its lifetime
+// lasts for as long as your app is running
+var pool = new Pool(config)
+
+app.get('test-db', function(req,res) {
+    //make a select request
+    //return a response with the results.
+    pool.query(`SELECT * FROM test`, function(err,result){
+        if (err) {
+            res.status(500).send(err.toString())
+        } else {
+            res.send(JSON.stringify(result));
+        }
+    })
+})
 var articles = {
         articleOne: {
         title: 'Article One',
