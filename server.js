@@ -19,6 +19,7 @@ var config = {
 // lasts for as long as your app is running
 var pool = new Pool(config);
 
+console.dir(process.env.DATABASE_URL);
 
 
 var articles = {
