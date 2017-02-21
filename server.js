@@ -143,6 +143,8 @@ var counter = 0;
 app.get('/counter', function (req, res) {
   res.send(counter.toString());
    counter += 1; 
+   
+   console.dir(process.env.DATABASE_URL);
   
 });
 
